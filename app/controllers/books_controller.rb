@@ -17,9 +17,10 @@ class BooksController < ApplicationController
   def update
     @book = Book.find(params[:id])
      if @book.update title: params[:title]
-     redirect_to "/books/#{params[:id]}"
+       flash[:success] = "Le livre a été mis à jour."
+       redirect_to "/books/#{params[:id]}"
      else
-     render 'show'
+       render 'show'
      end
   end
 
