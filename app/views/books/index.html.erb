@@ -1,5 +1,6 @@
 <h1>Liste des livres</h1>
-
+<%= image_tag "butterfly.png", alt: "butterfly", width: 64, height: 64 %>
+<br /><br />
 <% @books.each do |book| %>
 <p><a href="/books/<%= book.id %>">
   <% if book.category %>
@@ -10,4 +11,4 @@
 </a></p>
 <% end %>
 
-<%= render "books/form" %>
+<%= render "books/form" %><br /><br /><br />
