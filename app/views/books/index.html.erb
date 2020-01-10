@@ -10,12 +10,4 @@
 </a></p>
 <% end %>
 
-<%= form_tag "/books", method: "post" do %>
-  <input type="text" name="title" />
-  <select name="category_id">
-    <%= @categories.each do |category| %>
-    <option value="<%= category.id %>"><%= category.name %> </option>
-    <% end %>
-  </select>
-  <input type="submit" value="Ajouter un livre" />
-<% end %>
+<%= render "books/form" %>

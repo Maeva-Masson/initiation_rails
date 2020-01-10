@@ -2,12 +2,20 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
+    @book = Book.new
     @categories = Category.all
   end
 
   def create
-    Book.create title: params[:title], category_id: params[:category_id]
-    redirect_to "/books"
+    @book = Book.new title: params[:title], category_id: params[:category_id]
+    if @book.save
+      flash[:success] = "Le livre a été bien été créé."
+      redirect_to "/books"
+    else
+      flash[:error] = "Le livre n'a pas été bien été créé. : #{@book.errors.full_messages.join(', ')}"
+      @books = Book.all
+      render "index"
+    end
   end
 
   def show
